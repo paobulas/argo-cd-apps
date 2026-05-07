@@ -5,5 +5,21 @@ namespace: onetimesecret
 resources:
 - ../../base
 
+images:
+- name: artifactory.silabs.net/platform-devops-docker/snappass-new
+  newName: artifactory.silabs.net/platform-devops-docker/snappass-dev
+  newTag: "0.2"
+
 patches:
-  - path: patch.yaml
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: onetimesecret
+  path: deployment-patch.yaml
+- target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: onetimesecret-ingress
+  path: ingress-patch.yaml
