@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onetimesecret
+spec:
+  selector:
+    matchLabels:
+      app: onetimesecret
+      tier: frontend
+  replicas: 1
+  template:
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - image: artifactory.silabs.net/platform-devops-docker/snappass-dev:0.2
+        name: onetimesecret
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"

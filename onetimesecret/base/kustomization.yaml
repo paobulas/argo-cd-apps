@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: onetimesecret
+
+resources:
+- onetimesecret-db-pvc.yaml
+- onetimesecret-db-svc.yaml
+- onetimesecret-db.yaml
+- onetimesecret-deploy.yaml
+- onetimesecret-svc.yaml
+- onetimesecret-ingress.yaml
