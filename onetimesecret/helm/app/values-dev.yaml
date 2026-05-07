@@ -1,0 +1,22 @@
+snappass:
+  ingress:
+    enabled: true
+    className: "nginx"
+    hosts:
+    - host: onetimesecret-k8s.dev.silabs.net
+      paths:
+      - path: /
+        pathType: Prefix
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  valkey:
+    storage:
+      className: nfs-csi-k8s
+      requestedSize: 5Gi
