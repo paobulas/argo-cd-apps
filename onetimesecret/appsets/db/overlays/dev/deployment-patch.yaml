@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: redis
+        resources:
+          requests:
+            cpu: "15m"
+            memory: "10Mi"
+          limits:
+            cpu: "20m"
+            memory: "15Mi"
