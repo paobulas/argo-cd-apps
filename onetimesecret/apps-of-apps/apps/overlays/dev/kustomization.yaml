@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+
+resources:
+- ../../base
+
+patches:
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: onetimesecret-db
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: onetimesecret-dev-db
+    - op: replace
+      path: /spec/source/path
+      value: onetimesecret/apps-of-apps/db/overlays/dev
+- target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Application
+    name: onetimesecret-app
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: onetimesecret-dev-app
+    - op: replace
+      path: /spec/source/path
+      value: onetimesecret/apps-of-apps/app/overlays/dev
