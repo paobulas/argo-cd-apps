@@ -1,0 +1,6 @@
+dependencies:
+- name: snappass
+  repository: https://lmacka.github.io/helm-snappass/
+  version: 0.4.3
+digest: sha256:48a1bad2739afa3b2cb7d8929ada7812a3aa85892934d6ff51f2124f269951d8
+generated: "2026-05-07T17:37:15.387818736+05:30"
