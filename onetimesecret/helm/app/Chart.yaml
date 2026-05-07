@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: onetimesecret
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://lmacka.github.io/helm-snappass/
+    chart: snappass
+    targetRevision: "0.4.3"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: onetimesecret
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
