@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: onetimesecret
+  namespace: onetimesecret
 spec:
   selector:
     matchLabels:
